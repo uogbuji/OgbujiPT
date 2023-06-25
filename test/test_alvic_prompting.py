@@ -7,7 +7,8 @@ pytest test/test_alvic_prompting.py
 '''
 import pytest
 
-from ogbujipt.model_style.alvic import make_prompt, sub_style
+from ogbujipt.model_style.alvic import make_prompt
+from ogbujipt.model_style import style
 
 
 def test_basic_prompt_substyles():
@@ -30,7 +31,7 @@ def test_basic_prompt_substyles():
     prompt = make_prompt(
         'Correct the following XML to make it well-formed',
         inputs=BAD_XML_CODE,
-        sub=sub_style.ALPACA
+        sub=style.ALPACA
         )
     assert prompt == EXPECTED_PROMPT
 
@@ -38,7 +39,7 @@ def test_basic_prompt_substyles():
     prompt = make_prompt(
         'Correct the following XML to make it well-formed',
         inputs=BAD_XML_CODE,
-        sub=sub_style.ALPACA_INSTRUCT
+        sub=style.ALPACA_INSTRUCT
         )
     assert prompt == EXPECTED_PROMPT
 
@@ -47,8 +48,8 @@ def test_basic_prompt_substyles():
         prompt = make_prompt(
             'What is the capital of Cross River state?',
             inputs='NONSENSE',  # Meaningless for Vicuña
-            sub=sub_style.VICUNA)
+            sub=style.VICUNA)
 
     prompt = make_prompt('What is the capital of Cross River state?',
-                         sub=sub_style.VICUNA)
+                         sub=style.VICUNA)
     assert prompt == EXPECTED_PROMPT

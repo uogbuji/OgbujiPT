@@ -11,4 +11,18 @@
 ['/models/TheBloke_WizardLM-13B-V1.0-Uncensored-GGML/wizardlm-13b-v1.0-uncensored.ggmlv3.q6_K.bin']
 '''
 
-from ogbujipt.model_style.helper import hosted_model_openai  # noqa
+from enum import Enum
+
+
+class style(Enum):
+    '''
+    Marker of different prompring styles. When LLMs are trained, they're tuned
+    to expect prompts according to a specific convention, and can become very
+    erratic if you use the wrong one
+    '''
+    ALPACA = 1
+    ALPACA_INSTRUCT = 2
+    VICUNA = 3
+    WIZARD = 4
+
+from ogbujipt.model_style.helper import hosted_model_openai, model_style_from_name  # noqa

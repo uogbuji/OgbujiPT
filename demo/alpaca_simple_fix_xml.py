@@ -13,7 +13,8 @@ import click
 from langchain import OpenAI
 
 from ogbujipt.config import openai_emulation
-from ogbujipt.model_style.alvic import make_prompt, sub_style
+from ogbujipt.model_style.alvic import make_prompt
+from ogbujipt.model_style import style
 
 
 # Command line arguments defined in decorators
@@ -34,7 +35,7 @@ def main(host, port):
     prompt = make_prompt(
         'Correct the following XML to make it well-formed',
         inputs=BAD_XML_CODE,
-        sub=sub_style.ALPACA_INSTRUCT
+        sub=style.ALPACA_INSTRUCT
         )
     # print(prompt)
 

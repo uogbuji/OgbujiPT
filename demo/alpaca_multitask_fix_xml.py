@@ -21,11 +21,12 @@ from langchain import OpenAI
 
 from ogbujipt.config import openai_emulation
 from ogbujipt.async_helper import schedule_llm_call
-from ogbujipt.model_style.alvic import make_prompt, sub_style
+from ogbujipt.model_style.alvic import make_prompt
+from ogbujipt.model_style import style
 
 # Establish the Alpaca prompting style through "currying" make_prompt
 alpaca_instruct_make_prompt = partial(
-    make_prompt, sub=sub_style.ALPACA_INSTRUCT)
+    make_prompt, sub=style.ALPACA_INSTRUCT)
 
 DOTS_SPACING = 0.5  # Number of seconds between each dot printed to console
 
