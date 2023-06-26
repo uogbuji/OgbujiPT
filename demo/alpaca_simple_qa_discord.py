@@ -77,7 +77,7 @@ async def send_llm_msg(msg):
 @client.event
 async def on_message(message):
     # Ignore the bot's own messages & respond only to @mentions
-    # The client.user.id check creens out @everyone & @here pings
+    # The client.user.id check screens out @everyone & @here pings
     # FIXME: Better content check—what if the bot's id is a common word?
     if message.author == client.user \
             or not client.user.mentioned_in(message) \
